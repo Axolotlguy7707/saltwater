@@ -3,18 +3,17 @@ import { Sprite as PixiSprite, Texture, Assets } from "pixi.js";
  * The Base Class for Every Object in Saltwater
  */
 export class GameObject extends PixiSprite {
-    constructor(texture: Texture = Texture.WHITE) {
+    constructor(x: number = 0, y: number = 0, texture: Texture = Texture.WHITE) {
         super(texture);
+
+        this.x = x;
+        this.y = y;
     }
 
-    public static fromPath(path: string): GameObject {
-        const obj = new GameObject();
-
+    public loadGraphic(path: string): void {
         Assets.load(path).then(texture => {
-            obj.texture = texture;
+            this.texture = texture;
         });
-
-        return obj;
     }
 
     public update(_delta: number): void {
