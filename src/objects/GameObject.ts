@@ -7,10 +7,14 @@ export class GameObject extends PixiSprite {
         super(texture);
     }
 
-    public static async fromPath(path: string): Promise<GameObject> {
-        const texture = await Assets.load(path);
+    public static fromPath(path: string): GameObject {
+        const obj = new GameObject();
 
-        return new GameObject(texture);
+        Assets.load(path).then(texture => {
+            obj.texture = texture;
+        });
+
+        return obj;
     }
 
     public update(_delta: number): void {
