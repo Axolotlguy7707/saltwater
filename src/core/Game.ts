@@ -1,5 +1,6 @@
 import { Application } from "pixi.js";
 import type { Scene } from "./Scene";
+import { Input } from "./Input";
 
 export interface GameOptions {
     width?: number;
@@ -25,7 +26,16 @@ export class Game {
             backgroundColor: this.options.backgroundColor ?? 0x000000,
         });
 
+        Input.init();
+
         document.body.appendChild(this.app.canvas);
+
+        // The Update loop
+        this.app.ticker.add((ticker) => {
+            this.currentScene?.update(ticker.deltaTime);
+
+            Input.update();
+        });
     }
 
     public switchScene(scene: Scene) {
