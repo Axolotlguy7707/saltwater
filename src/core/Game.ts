@@ -1,4 +1,5 @@
 import { Application } from "pixi.js";
+import type { Scene } from "./Scene";
 
 export interface GameOptions {
     width?: number;
@@ -9,6 +10,8 @@ export interface GameOptions {
 export class Game {
     public app: Application;
     private options: GameOptions;
+
+    private currentScene?: Scene;
 
     constructor(options: GameOptions = {}) {
         this.options = options;
@@ -23,5 +26,18 @@ export class Game {
         });
 
         document.body.appendChild(this.app.canvas);
+    }
+
+    public switchScene(scene: Scene) {
+        if (this.currentScene) {
+            this.app.stage.removeChild(this.currentScene);
+            this.currentScene.destroy();
+        }
+
+        this.currentScene = scene;
+
+        this.currentScene.create();
+
+        this.app.stage.addChild(this.currentScene);
     }
 }
