@@ -1,21 +1,26 @@
 import { Application } from "pixi.js";
 import type { Scene } from "./Scene";
 import { Input } from "./Input";
+import type { PhysicsWorld } from "../physics/PhysicsWorld";
 
 export interface GameOptions {
     width?: number;
     height?: number;
     backgroundColor?: number;
+
+    physicsEnabled?: boolean;
 }
 /**
- * The main Saltwater game instance.
- * Handles the Pixi application, update loop, and scene management.
+ * The main Saltwater game instance
+ * Handles the Pixi application, update loop, and scene management
  */
 export class Game {
     public app: Application;
     private options: GameOptions;
 
     private currentScene?: Scene;
+
+    public physics?: PhysicsWorld;
 
     constructor(options: GameOptions = {}) {
         this.options = options;
@@ -38,6 +43,12 @@ export class Game {
             this.currentScene?.update(ticker.deltaTime);
 
             Input.update();
+
+            const dt = this.app.ticker.deltaMS;
+
+            if (this.options.physicsEnabled)
+                this.physics?.update(dt);
+            
         });
     }
 

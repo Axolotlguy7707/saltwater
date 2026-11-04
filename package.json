@@ -20,7 +20,8 @@
   "packageManager": "pnpm@12.16.1",
   "type": "module",
   "dependencies": {
-    "pixi.js": "^8.22.0"
+    "pixi.js": "^8.22.0",
+    "planck": "^1.5.1"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
