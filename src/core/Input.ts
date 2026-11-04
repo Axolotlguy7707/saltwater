@@ -16,10 +16,19 @@ export class Input {
         });
     }
 
+    /**
+     * Detects if the key is currently being pressed
+     * @param key 
+     * @returns If the key was pressed or not
+     */
     public static pressed(key: string): boolean {
         return this.keys.has(key);
     }
-
+    /**
+     * Detects if the key was just pressed
+     * @param key The key code
+     * @returns If the key was pressed or not
+     */
     public static justPressed(key: string): boolean {
         return this.justPressedKeys.has(key);
     }

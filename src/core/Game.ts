@@ -7,7 +7,10 @@ export interface GameOptions {
     height?: number;
     backgroundColor?: number;
 }
-
+/**
+ * The main Saltwater game instance.
+ * Handles the Pixi application, update loop, and scene management.
+ */
 export class Game {
     public app: Application;
     private options: GameOptions;
@@ -38,6 +41,10 @@ export class Game {
         });
     }
 
+    /**
+     * Switches scenes
+     * @param scene The Scene to switch to
+     */
     public switchScene(scene: Scene) {
         if (this.currentScene) {
             this.app.stage.removeChild(this.currentScene);
