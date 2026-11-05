@@ -2,6 +2,13 @@
 
 A Framework for making 2D games in JavaScript/TypeScript built on [PixiJS](https://pixijs.com/)
 
+```bash
+npm install saltwater
+```
+```bash
+pnpm add saltwater
+```
+
 ## WORK IN PROGRESS
 
 ## Features
