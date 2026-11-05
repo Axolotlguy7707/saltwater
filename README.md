@@ -5,7 +5,9 @@ A Framework for making 2D games in JavaScript/TypeScript built on [PixiJS](https
 ## Features
 
 ✅- Finished
+
 ☑️- Unfinished/Untested
+
 ❌- Not Implemented
 
 * GameObjects✅
