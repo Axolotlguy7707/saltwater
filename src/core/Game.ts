@@ -1,7 +1,7 @@
 import { Application } from "pixi.js";
 import type { Scene } from "./Scene";
 import { Input } from "./Input";
-import type { PhysicsWorld } from "../physics/PhysicsWorld";
+import { PhysicsWorld } from "../physics/PhysicsWorld";
 
 export interface GameOptions {
     width?: number;
@@ -28,6 +28,11 @@ export class Game {
     }
 
     async start() {
+        if (this.options.physicsEnabled) {
+            this.physics = new PhysicsWorld();
+        }
+
+
         await this.app.init({
             width: this.options.width ?? 1280,
             height: this.options.height ?? 720,
