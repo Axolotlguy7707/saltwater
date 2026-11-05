@@ -10,7 +10,7 @@ export default defineConfig({
             formats: ["es"]
         },
         rollupOptions: {
-            external: ["pixi.js"]
+            external: ["pixi.js", "planck"]
         }
     }
 });
